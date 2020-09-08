@@ -55,7 +55,7 @@ Things you may want to cover:
 | user       | references | null: false, foreign_key: true |
 | name       | string     | null: false                    |
 | detail     | text       | null: false                    |
-| category_iq| integer    | null: false                    |
+| category_id| integer    | null: false                    |
 | state_id   | integer    | null: false                    |
 | fee_id     | integer    | null: false                    |
 | province_id| integer    | null: false                    |
