@@ -37,7 +37,7 @@ Things you may want to cover:
 | fullname_last  | string | null: false |
 | kananame_first | string | null: false |
 | kananame_last  | string | null: false |
-| birth          | integer| null: false |
+| birth          | date   | null: false |
 
 
 
@@ -53,9 +53,8 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------  | -----------| ------------------------------ |
 | user    | references | null: false, foreign_key: true |
-| image   | string     | null: false                    |
 | name    | string     | null: false                    |
-| detail  | string     | null: false                    |
+| detail  | text       | null: false                    |
 | category| integer    | null: false                    |
 | state   | integer    | null: false                    |
 | fee     | integer    | null: false                    |
@@ -65,9 +64,9 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_many :comments
-- has_one :purchases
+- has_one :purchase
 
 ## comments テーブル
 
@@ -75,7 +74,7 @@ Things you may want to cover:
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
 | item   | references | null: false, foreign_key: true |
-| text   | string     | null: false                    |
+| text   | text       | null: false                    |
 
 ### Association
 
@@ -88,6 +87,19 @@ Things you may want to cover:
 | ---------- | ---------- | ------------------------------ |
 | item       | references | null: false, foreign_key: true |
 | user       | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+- has_one :address
+
+
+## addresses テーブル
+
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| purchase   | references | null: false, foreign_key: true |
 | postnum    | integer    | null: false,                   |
 | prefecture | integer    | null: false,                   |
 | city       | string     | null: false,                   |
@@ -97,5 +109,5 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :item
-- belongs_to :user
+- belongs_to :purchase
+
