@@ -100,12 +100,12 @@ Things you may want to cover:
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
 | purchase   | references | null: false, foreign_key: true |
-| postnum    | integer    | null: false,                   |
+| postnum    | string     | null: false,                   |
 | prefecture | integer    | null: false,                   |
 | city       | string     | null: false,                   |
 | address    | string     | null: false,                   |
 | building   | string     |                                |
-| tel        | integer    | null: false,                   |
+| tel        | string     | null: false,                   |
 
 ### Association
 
