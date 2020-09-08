@@ -50,17 +50,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column  | Type       | Options                        |
-| ------  | -----------| ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| name    | string     | null: false                    |
-| detail  | text       | null: false                    |
-| category| integer    | null: false                    |
-| state   | integer    | null: false                    |
-| fee     | integer    | null: false                    |
-| province| integer    | null: false                    |
-| days    | integer    | null: false                    |
-| price   | integer    | null: false                    |
+| Column     | Type       | Options                        |
+| ------     | -----------| ------------------------------ |
+| user       | references | null: false, foreign_key: true |
+| name       | string     | null: false                    |
+| detail     | text       | null: false                    |
+| category_iq| integer    | null: false                    |
+| state_id   | integer    | null: false                    |
+| fee_id     | integer    | null: false                    |
+| province_id| integer    | null: false                    |
+| days_id    | integer    | null: false                    |
+| price      | integer    | null: false                    |
 
 ### Association
 
@@ -97,15 +97,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| purchase   | references | null: false, foreign_key: true |
-| postnum    | string     | null: false,                   |
-| prefecture | integer    | null: false,                   |
-| city       | string     | null: false,                   |
-| address    | string     | null: false,                   |
-| building   | string     |                                |
-| tel        | string     | null: false,                   |
+| Column        | Type       | Options                        |
+| --------------| ---------- | ------------------------------ |
+| purchase      | references | null: false, foreign_key: true |
+| postnum       | string     | null: false,                   |
+| prefecture_id | integer    | null: false,                   |
+| city          | string     | null: false,                   |
+| address       | string     | null: false,                   |
+| building      | string     |                                |
+| tel           | string     | null: false,                   |
 
 ### Association
 
