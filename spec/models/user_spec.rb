@@ -52,7 +52,6 @@ describe User do
       it 'passwordが英数混合でなければでは登録できない' do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
-        # expect(@user).to be_valid
         @user.valid?
         expect(@user.errors.full_messages).to include('Password password は 英数混合6文字以上です')
       end
