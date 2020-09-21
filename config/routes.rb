@@ -4,6 +4,5 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :new, :post]
   root to: 'items#index'
   resources :items, only: [:edit, :new, :create, :post] 
-  post 'items/new'
 
 end
