@@ -6,4 +6,3 @@ class Day < ActiveHash::Base
     { id: 4, name: '4~7日で発送' }
   ]
 end
-
