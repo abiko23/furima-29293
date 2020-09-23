@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -17,6 +17,13 @@ class ItemsController < ApplicationController
       render action: :new
 
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
+    @user = User.find(@item.user_id)
+    @province = Prefecture.find(@item.province_id)
+    @day = Day.find(@item.days_id)
   end
 
   private
