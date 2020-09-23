@@ -21,9 +21,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @user = User.find(@item.user_id)
-    @province = Prefecture.find(@item.province_id)
-    @day = Day.find(@item.days_id)
   end
 
   private

@@ -4,8 +4,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :category
   belongs_to_active_hash :state
   belongs_to_active_hash :fee
-  belongs_to_active_hash :prefecture
-  belongs_to_active_hash :day
+  belongs_to_active_hash :province
+  belongs_to_active_hash :days
   has_one_attached :image
 
   validates :name, :detail, :category_id, :state_id, :fee_id, :province_id, :days_id,  :price, :image, presence: true
