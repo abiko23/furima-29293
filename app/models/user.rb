@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :purchases
 
   validates :nickname, :email, :password, :fullname_first, :fullname_last, :kananame_first, :kananame_last, :birth, presence: true
   validates :kananame_first, :kananame_last, format: { with: /\A[ァ-ン]/, base: 'お名前(カナ)はカタカナで入力してください。' }
