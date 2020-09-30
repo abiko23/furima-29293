@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :new, :post]
   root to: 'items#index'
   resources :items do
-    resources :orders, only: :index
+    resources :orders, only: [:index, :new, :create]
   end
 end

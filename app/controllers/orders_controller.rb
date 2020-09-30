@@ -1,12 +1,20 @@
 class OrdersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.new
-    @address = Address.new
+    @order = PurchaseAddress.new
   end
 
+  def new
+    @order = PurchaseAddress.new
+  end
+  
+
   def create
-    @order = Order.new(price: order_params[:price])
+    #binding.pry
+    @item = Item.find(params[:item_id])
+    #@order = Order.new(order_params)
+    binding.pry
+    @order = PurchaseAddress.new(purchase_params)
     if @order.valid?
       pay_item
       @order.save
@@ -18,17 +26,17 @@ class OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.permit(:price, :token)
-  end
-
   def pay_item
-    Payjp.api_key = "sk_test_XXXXXXXX"  # PAY.JPテスト秘密鍵
-    Payjp::Charge.create(
-      amount: order_params[:price],  # 商品の値段
-      card: order_params[:token],    # カードトークン
+    Payjp.api_key = "sk_test_951d6ecb774b61127114bed7"  # PAY.JPテスト秘密鍵
+    Payjp::Charge.create(  # 商品の値段
+      amount: purchase_params(@item.price),
+      card: purchase_params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+  def purchase_params
+    params.permit(:postnum, :prefecture_id, :city, :address, :building, :tel, :token, :price)
   end
 
 end
