@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase = Purchase.exists?(item_id: @item.id)
   end
 
   def edit
