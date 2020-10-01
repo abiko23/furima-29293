@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :purchase_address do
-    token {"tok_abcdefghijk00000000000000000"}
+    token {'tok_abcdefghijk00000000000000000'}
     postnum {'123-4567'}
     prefecture_id {rand(1..47)}
     city {'所沢市'}

@@ -30,13 +30,13 @@ RSpec.describe PurchaseAddress, type: :model do
     it '郵便番号の桁が正しくないと保存できない' do
       @order.postnum = '12-3456'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Postnum is invalid. Include hyphen(-)")
+      expect(@order.errors.full_messages).to include('Postnum is invalid. Include hyphen(-)')
     end
 
     it '郵便番号に-がないと保存できない' do
       @order.postnum = '1234567'
       @order.valid?
-      expect(@order.errors.full_messages).to include("Postnum is invalid. Include hyphen(-)")
+      expect(@order.errors.full_messages).to include('Postnum is invalid. Include hyphen(-)')
     end
 
     it '都道府県が-だと保存できない' do
@@ -62,6 +62,5 @@ RSpec.describe PurchaseAddress, type: :model do
       @order.valid?
       expect(@order.errors.full_messages).to include("Tel can't be blank")
     end
-
   end
 end
