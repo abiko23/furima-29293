@@ -10,6 +10,11 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@order).to be_valid
     end
 
+    it '建物名が空でも保存できる' do
+      @order.building = ''
+      expect(@order).to be_valid
+    end
+
     it 'トークンが空だと保存できない' do
       @order.token = ''
       @order.valid?

@@ -5,6 +5,7 @@ FactoryBot.define do
     prefecture_id {rand(1..47)}
     city {'所沢市'}
     address {'狭山ヶ丘2-28-3'}
+    building {'GRAND練馬202'}
     tel {'08056924647'}
   end
 end
