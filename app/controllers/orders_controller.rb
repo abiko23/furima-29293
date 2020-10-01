@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
+    redirect_to root_path if @item.user_id = current_user.id
     @order = PurchaseAddress.new
     @purchase = Purchase.exists?(item_id: @item.id)
     redirect_to root_path if @purchase
