@@ -20,12 +20,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase = Purchase.exists?(item_id: @item.id)
   end
 
   def edit
-    if @item.user_id != current_user.id
-      redirect_to item_path(@item.id)
-    end
+    redirect_to item_path(@item.id) if @item.user_id != current_user.id
   end
 
   def update
@@ -53,5 +52,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end

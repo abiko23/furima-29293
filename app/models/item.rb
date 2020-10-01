@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :province
   belongs_to_active_hash :days
   has_one_attached :image
+  has_one :purchase
 
   validates :name, :detail, :category_id, :state_id, :fee_id, :province_id, :days_id,  :price, :image, presence: true
 
