@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
+
+  before_action :set_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @order = PurchaseAddress.new
     @purchase = Purchase.exists?(item_id: @item.id)
     redirect_to root_path if @purchase
@@ -11,9 +13,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # binding.pry
-    @item = Item.find(params[:item_id])
-    # @order = Order.new(order_params)
     @order = PurchaseAddress.new(purchase_params)
     if @order.valid?
       pay_item
@@ -27,12 +26,16 @@ class OrdersController < ApplicationController
   private
 
   def pay_item
-    Payjp.api_key = 'sk_test_951d6ecb774b61127114bed7' # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @item.price, # 商品の値段
       card: purchase_params[:token], # カードトークン
       currency: 'jpy'                 # 通貨の種類(日本円)
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def purchase_params

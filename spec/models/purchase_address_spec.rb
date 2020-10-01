@@ -62,5 +62,19 @@ RSpec.describe PurchaseAddress, type: :model do
       @order.valid?
       expect(@order.errors.full_messages).to include("Tel can't be blank")
     end
+
+    it '電話番号に-があると保存できない' do
+      @order.tel = '080-5692-4647'
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Tel is invalid. Exclude hyphen(-)")
+    end
+
+    it '電話番号が11桁以上だと保存できない' do
+      @order.tel = '123456789012'
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Tel is invalid. Exclude hyphen(-)")
+    end
+
+
   end
 end
